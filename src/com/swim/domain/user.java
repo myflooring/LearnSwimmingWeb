@@ -14,6 +14,13 @@ public class user {
 	private String education;//用户学历
 	private String tele;//用户电话
 	private String email;//用户电子邮件
+	
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
 	public String getUserid() {
 		return userid;
 	}

@@ -58,6 +58,7 @@ uid int,
 ctid int,
 chid int,
 pdate datetime,
+lastlearn varchar(255),
 primary key(uid,ctid),
 foreign key(uid) references user(uid),
 foreign key(ctid) references coursetotal(ctid),
@@ -70,15 +71,17 @@ uid int,
 tdate datetime,
 content longtext,
 theme varchar(255),
+themetie int default 0,
+huitienum int default 0,
 foreign key(uid) references user(uid),
-goodnumber int default 0,
-badnumber int default 0,
+CONSTRAINT theme_tiezi CHECK (themetie in(0,1))
 );
 
 create table article(
 aid int primary key  Auto_Increment,
 adate datetime,
 author varchar(255),
+Clicknum int default 0,
 content longtext
-clicknumber int default 0
+
 );

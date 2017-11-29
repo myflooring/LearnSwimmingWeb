@@ -12,6 +12,12 @@ public class coursetotal {
 	private String ctbrief;//¿Î³Ì¼ò½é
 	private String img;//¿Î³Ì·âÃæ
 	
+	public int getCtid() {
+		return ctid;
+	}
+	public void setCtid(int ctid) {
+		this.ctid = ctid;
+	}
 	public String getCtname() {
 		return ctname;
 	}
