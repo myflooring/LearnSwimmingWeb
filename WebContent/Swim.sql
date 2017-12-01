@@ -15,7 +15,7 @@ email varchar(255)
 create table coursetotal(
 ctid int primary key  Auto_Increment,
 ctname varchar(255),
-teachername varchar(255),
+tid int,
 studentnumber int default 0,
 ctbrief varchar(255),
 img varchar(255)
@@ -82,5 +82,12 @@ adate datetime,
 author varchar(255),
 Clicknum int default 0,
 content longtext
-
 );
+
+create table Teacher(
+tid int primary key  Auto_Increment,
+teachername varchar(255),
+teacherbrief longtext,
+teacherpassword varchar(255),
+img varchar(255)
+)

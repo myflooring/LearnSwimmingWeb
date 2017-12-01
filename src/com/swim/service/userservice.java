@@ -4,35 +4,35 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.swim.dao.impl.userdao;
-import com.swim.domain.user;
+import com.swim.domain.User;
 import com.swim.idao.iuserdao;
 import com.swim.iservice.iuserservice;
 
 public class userservice implements iuserservice{
 	private iuserdao ud= new userdao();
 	@Override
-	public user login(user u) throws ClassNotFoundException, SQLException {
+	public User login(User u) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		user realuser=ud.login(u);
+		User realuser=ud.login(u);
 		return realuser;
 	}
 
 	@Override
-	public user register(user u) throws ClassNotFoundException, SQLException {
+	public User register(User u) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		user realuser=ud.register(u);
+		User realuser=ud.register(u);
 		return realuser;
 		
 	}
 
 	@Override
-	public user changeassword(user u) throws ClassNotFoundException, SQLException {
+	public User changeassword(User u,String repassword) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		return ud.changeassword(u);
+		return ud.changeassword(u,repassword);
 	}
 
 	@Override
-	public user changenfo(user u) throws ClassNotFoundException, SQLException {
+	public User changenfo(User u) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return ud.changenfo(u);
 	}

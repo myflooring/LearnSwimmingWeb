@@ -4,10 +4,10 @@ package com.swim.domain;
  * @author Chan
  *
  */
-public class coursetotal { 
+public class CourseTotal { 
 	private int ctid;//课程主键
 	private String ctname;//课程名
-	private String teachername;//课程教师名
+	private int tid;//课程教师编号
 	private String studentnumber;//课程已经参与的学生数目
 	private String ctbrief;//课程简介
 	private String img;//课程封面
@@ -24,11 +24,12 @@ public class coursetotal {
 	public void setCtname(String ctname) {
 		this.ctname = ctname;
 	}
-	public String getTeachername() {
-		return teachername;
+	
+	public int getTid() {
+		return tid;
 	}
-	public void setTeachername(String teachername) {
-		this.teachername = teachername;
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 	public String getStudentnumber() {
 		return studentnumber;

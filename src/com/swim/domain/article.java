@@ -1,6 +1,6 @@
 package com.swim.domain;
 
-public class article {
+public class Article {
 	private int aid;//文章编号 
 	private String adate;//文章发表时间 
 	private String author;//文章作者 

@@ -4,7 +4,7 @@ package com.swim.domain;
  * @author Chan
  *
  */
-public class subscribeCourse {
+public class SubscribeCourse {
 	private int uid;
 	private int ctid;
 	private String sdate;//¶©ÔÄµÄÊ±¼ä

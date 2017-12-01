@@ -4,7 +4,7 @@ package com.swim.domain;
  * @author Chan
  *
  */
-public class user {
+public class User {
 	private int uid;//学生唯一编号，数据库主键、
 	private String userid;//用户帐号
 	private String username;//用户昵称

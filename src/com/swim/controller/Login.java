@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.swim.domain.user;
+import com.swim.domain.User;
 import com.swim.iservice.iuserservice;
 import com.swim.service.userservice;
 
@@ -33,7 +33,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+		return;
 	}
 
 	/**
@@ -47,10 +48,10 @@ public class Login extends HttpServlet {
 		String userid=request.getParameter("userid");
 		String userpassword=request.getParameter("userpassword");
 		HttpSession session=request.getSession();
-		user u=new user();
+		User u=new User();
 		u.setUserid(userid);
 		u.setUserpassword(userpassword);
-		user realuser=null;
+		User realuser=null;
 		try {
 			realuser=us.login(u);
 			
@@ -60,7 +61,7 @@ public class Login extends HttpServlet {
 			response.sendRedirect("Login.jsp");
 		}
 		if(realuser!=null) {
-			session.setAttribute("user", realuser);
+			session.setAttribute("User", realuser);
 			// when user Login sucessfully,turn to ChooseCourse.jsp
 			response.sendRedirect("ChooseCourse.jsp");
 		}else {

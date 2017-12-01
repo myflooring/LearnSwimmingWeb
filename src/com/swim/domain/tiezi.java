@@ -1,6 +1,6 @@
 package com.swim.domain;
 
-public class tiezi {
+public class Tiezi {
 	private int tid;//帖子的编号 
 	private int uid; 
 	private String tdate;//发帖时间 

@@ -4,7 +4,7 @@ package com.swim.domain;
  * @author Chan
  *
  */
-public class course {
+public class Course {
 	private int ctid;//课程主键
 	private int chid;//课程章节编号
 	private String ctname;//章节名

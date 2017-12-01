@@ -4,7 +4,7 @@ package com.swim.domain;
  * @author Chan
  *
  */
-public class courseComment {
+public class CourseComment {
 	private int ccid;//评价的编号
 	private String content;//评价内容
 	private String cdate;//评价时间

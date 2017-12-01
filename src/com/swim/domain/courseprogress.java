@@ -1,6 +1,6 @@
 package com.swim.domain;
 
-public class courseprogress {
+public class CourseProgress {
 	private int uid; 
 	private int ctid;
 	private int chid; 

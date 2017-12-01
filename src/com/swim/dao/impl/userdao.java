@@ -8,7 +8,7 @@ import java.util.List;
 
 
 import com.swim.database.DatabaseConnection;
-import com.swim.domain.user;
+import com.swim.domain.User;
 import com.swim.idao.iuserdao;
 
 public class userdao implements iuserdao {
@@ -16,9 +16,9 @@ public class userdao implements iuserdao {
 
 
 	@Override
-	public user login(user u) throws ClassNotFoundException, SQLException {
+	public User login(User u) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		user realuser=new user();
+		User realuser=new User();
 		try(Connection conn=defaultConnection.openConnection()){
 			String userid=u.getUserid();
 			String userpassword=u.getUserpassword();
@@ -26,7 +26,7 @@ public class userdao implements iuserdao {
 			PreparedStatement pt=conn.prepareStatement(sql);
 			pt.setString(1, userid);
 			ResultSet rs=pt.executeQuery();
-			if(!rs.next()) {
+			if(rs.next()) {
 				String selectpassword=rs.getString("userpassword");
 				if(userpassword.equals(selectpassword)) {
 					realuser.setUid(rs.getInt("uid"));
@@ -50,36 +50,66 @@ public class userdao implements iuserdao {
 	}
 
 	@Override
-	public user register(user u) throws ClassNotFoundException, SQLException {
+	public User register(User u) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		user realuser=new user();
-		
-		
+		User realuser=new User();
+		try(Connection conn=defaultConnection.openConnection()){
+			String userid=u.getUserid();
+			String username=u.getUsername();
+			String userpassword=u.getUserpassword();
+			String sql="INSERT INTO user(userid,username,userpassword) VALUES(?,?,?)";
+			PreparedStatement pt=conn.prepareStatement(sql);
+			pt.setString(1, userid);
+			pt.setString(2, username);
+			pt.setString(3, userpassword);
+			int rs=pt.executeUpdate();
+			if(rs!=0) {
+				realuser.setUserid(userid);
+				realuser.setUsername(username);
+				realuser.setUserpassword(userpassword);
+			}
+			return realuser;
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
 	@Override
-	public user changeassword(user u) throws ClassNotFoundException, SQLException {
+	public User changeassword(User u, String repassword) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
+		User realuser=new User();
+		try(Connection conn=defaultConnection.openConnection()){
+			int uid=u.getUid();
+			String sql="UPDATE user SET userpassword=? WHERE uid=?";
+			PreparedStatement pt=conn.prepareStatement(sql);
+			pt.setString(1, repassword);
+			pt.setInt(2, uid);
+			int rs=pt.executeUpdate();
+			if(rs!=0) {
+				realuser.setUserid(u.getUserid());
+				realuser.setUserpassword(repassword);
+				realuser.setUsername(u.getUsername());
+				realuser.setUid(uid);
+			}
+			return realuser;
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
 	@Override
-	public user changenfo(user u) throws ClassNotFoundException, SQLException {
+	public User changenfo(User u) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/*@Override
-	public List<String> getallUserinformation(int uid) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	 */
 	@Override
 	public List<String> getallCoursebyuid(int uid) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 }
