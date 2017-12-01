@@ -37,16 +37,18 @@ public class userservice implements iuserservice{
 		return ud.changenfo(u);
 	}
 
-	@Override
+	/*@Override
 	public List<String> getallUserinformation(int uid) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return ud.getallUserinformation(uid);
 	}
-
+	 */
 	@Override
 	public List<String> getallCoursebyuid(int uid) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		return ud.getallCoursebyuid(uid);
 	}
+
+	
 
 }

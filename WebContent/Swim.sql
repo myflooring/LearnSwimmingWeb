@@ -9,8 +9,7 @@ img varchar(255),
 content longtext,
 education varchar(255),
 tele varchar(255),
-email varchar(255),
-grade varchar(255)
+email varchar(255)
 );
 
 create table coursetotal(
