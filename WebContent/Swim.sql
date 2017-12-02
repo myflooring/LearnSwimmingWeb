@@ -5,6 +5,8 @@ uid int primary key  Auto_Increment,
 userid varchar(255),
 username varchar(255),
 userpassword varchar(255),
+usersex varchar(4),
+userage int,
 img varchar(255),
 content longtext,
 education varchar(255),
@@ -29,7 +31,7 @@ ctbrief varchar(255),
 cttime varchar(255),
 videourl varchar(255),
 primary key(ctid,chid)
-)
+);
 
 create table subscribeCourse(
 uid int,
@@ -52,7 +54,16 @@ foreign key(uid) references user(uid),
 foreign key(ctid) references coursetotal(ctid)
 );
 
-create table courseprogress(
+create table dianzanorfandui(
+ccid int,
+uid int,
+judge int not null check(judge=1 or judge=0),
+primary key(ccid,uid),
+foreign key(ccid) references coursecomment(ccid),
+foreign key(uid) references user(uid)
+);
+
+create table courseprocess(
 uid int,
 ctid int,
 chid int,
@@ -60,21 +71,9 @@ pdate datetime,
 lastlearn varchar(255),
 primary key(uid,ctid),
 foreign key(uid) references user(uid),
-foreign key(ctid) references coursetotal(ctid),
-foreign key(chid) references course(chid)
+foreign key(ctid) references coursetotal(ctid)
 );
 
-create table tiezi(
-tid int primary key  Auto_Increment,
-uid int,
-tdate datetime,
-content longtext,
-theme varchar(255),
-themetie int default 0,
-huitienum int default 0,
-foreign key(uid) references user(uid),
-CONSTRAINT theme_tiezi CHECK (themetie in(0,1))
-);
 
 create table article(
 aid int primary key  Auto_Increment,
